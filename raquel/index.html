@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Agenda da Raquel</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6efe7;--ink:#2b1a12;--muted:#7a6155;--brand:#7b3f22;--brand2:#b5673d;--card:#fffaf5;--line:#e6d7c9;--ok:#3f7a4a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;line-height:1.5}
+.wrap{max-width:1100px;margin:0 auto;padding:40px 16px;display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:start}
+@media(max-width:860px){.wrap{grid-template-columns:1fr;gap:28px}.phone{margin:0 auto}}
+h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(30px,4vw,44px);line-height:1.1;margin-bottom:14px}
+.tag{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);font-weight:700;margin-bottom:12px}
+.lead{color:var(--muted);font-size:17px;margin-bottom:28px}
+h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:22px;margin:26px 0 10px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.cmp{grid-template-columns:1fr}}
+.cmp div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:14.5px}
+.cmp b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.cmp .no b{color:#a2453a}.cmp .yes b{color:var(--ok)}
+ol.steps{list-style:none;counter-reset:s}
+ol.steps li{counter-increment:s;padding:10px 0 10px 44px;position:relative;border-bottom:1px solid var(--line)}
+ol.steps li:before{content:counter(s);position:absolute;left:0;top:10px;width:30px;height:30px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px}
+.foot{margin-top:28px;font-size:12.5px;color:var(--muted)}
+/* phone */
+.phone{width:100%;max-width:380px;background:#1b110c;border-radius:42px;padding:12px;box-shadow:0 30px 60px -20px rgba(60,30,15,.45);position:sticky;top:24px}
+.screen{background:var(--card);border-radius:32px;overflow:hidden;height:720px;display:flex;flex-direction:column}
+.top{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;padding:22px 20px 18px}
+.top small{opacity:.8;font-size:12px}.top h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:24px}
+.prog{display:flex;gap:6px;margin-top:12px}.prog i{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.3)}.prog i.on{background:#fff}
+.body{flex:1;overflow:auto;padding:18px}
+.q{font-weight:700;margin:4px 0 10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:12px;text-align:left;font:inherit;cursor:pointer;color:var(--ink);transition:.15s}
+.opt:hover{border-color:var(--brand2)}.opt.sel{border-color:var(--brand);background:#f7e9de}
+.opt span{display:block;font-size:12px;color:var(--muted)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer;color:var(--ink)}
+.chip.sel{background:var(--brand);border-color:var(--brand);color:#fff}
+.est{background:#f2e3d6;border-radius:14px;padding:14px;margin-top:6px}
+.est .v{font-family:'DM Serif Display',serif;font-size:28px;color:var(--brand)}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:14px}
+.day{min-width:58px;text-align:center;border:1.5px solid var(--line);border-radius:14px;padding:8px 4px;background:#fff;cursor:pointer;font:inherit;color:var(--ink)}
+.day b{display:block;font-size:18px}.day.sel{background:var(--brand);color:#fff;border-color:var(--brand)}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.slot{border:1.5px solid var(--line);border-radius:10px;padding:9px 0;background:#fff;font:inherit;cursor:pointer;color:var(--ink)}
+.slot.sel{background:var(--brand);color:#fff;border-color:var(--brand)}
+.slot:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.bar{padding:14px 18px;border-top:1px solid var(--line);display:flex;gap:10px}
+.btn{flex:1;border:0;border-radius:14px;padding:14px;font:inherit;font-weight:700;cursor:pointer;background:var(--brand);color:#fff}
+.btn.ghost{flex:0 0 auto;background:transparent;color:var(--brand);border:1.5px solid var(--line)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.sum div{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.auto{margin-top:14px;display:grid;gap:8px}
+.auto p{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13.5px}
+.wa{background:#e7f6e9;border-radius:12px 12px 12px 2px;padding:10px 12px;font-size:13.5px;margin-top:8px}
+.note{font-size:11.5px;color:var(--muted);margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section>
+    <span class="tag">Feito pra @flortrancista</span>
+    <h1>Sua cliente faz o orçamento e marca o horário sozinha.</h1>
+    <p class="lead">Raquel, olhei seu perfil: seus destaques já separam os estilos (Boho, Ghana, Fulani, Box braids, French curl, Gypsy, Masculina) e a bio manda tudo pro WhatsApp. Esse protótipo mostra como ficaria um link na bio que resolve orçamento + agenda sem você parar a trança pra responder.</p>
+
+    <div class="cmp">
+      <div class="no"><b>Hoje</b>"Quanto fica a box braids?" → você pergunta tamanho, volume, se tem cabelo… → manda horários → espera resposta. Tudo no meio de uma trança de 6 horas.</div>
+      <div class="yes"><b>Com o app</b>A cliente escolhe estilo, comprimento e volume, já vê o valor e quanto tempo leva, e só aparecem os horários que cabem na sua agenda.</div>
+    </div>
+
+    <h2>Como funciona</h2>
+    <ol class="steps">
+      <li><b>Link na bio</b> no lugar do wa.me. Abre como app no celular, sem baixar nada.</li>
+      <li><b>Você define a tabela</b>: preço e duração por estilo, comprimento e volume. Muda quando quiser.</li>
+      <li><b>A agenda se protege sozinha</b>: uma Fulani de 5h não cabe num buraco de 2h, então o horário nem aparece.</li>
+      <li><b>Sinal por Pix</b> pra segurar o horário. Chega de cliente que marca e some.</li>
+      <li><b>WhatsApp no automático</b>: lembrete na véspera e aviso de manutenção/retirada umas semanas depois (cliente voltando sem você correr atrás).</li>
+    </ol>
+    <p class="foot">Protótipo demonstrativo feito por @fran.automacao. Valores, durações e horários são exemplos: no projeto real entram os seus.</p>
+  </section>
+
+  <div class="phone"><div class="screen">
+    <div class="top"><small>Raquel Tranças e Penteados · Aracaju · <b>protótipo</b></small><h3 id="ttl">Qual trança você quer?</h3><div class="prog" id="prog"><i class="on"></i><i></i><i></i><i></i></div></div>
+    <div class="body" id="body"></div>
+    <div class="bar"><button class="btn ghost" id="back">Voltar</button><button class="btn" id="next">Continuar</button></div>
+  </div></div>
+</div>
+
+<script>
+const estilos=[
+ {n:'Box braids',p:250,h:5},{n:'Boho braids',p:300,h:6},{n:'Ghana braids',p:180,h:3},{n:'Fulani',p:280,h:5},
+ {n:'French curl',p:320,h:6},{n:'Gypsy braids',p:340,h:7},{n:'Trança masculina',p:90,h:1.5},{n:'Nagô simples',p:80,h:1.5}];
+const comps=[{n:'Ombro',f:.85},{n:'Meio das costas',f:1},{n:'Cintura',f:1.2},{n:'Bumbum',f:1.4}];
+const vols=[{n:'Fina',f:1.3},{n:'Média',f:1},{n:'Grossa',f:.8}];
+const s={step:0,e:null,c:1,v:1,cab:true,d:0,t:null};
+const $=id=>document.getElementById(id);
+const brl=v=>'R$ '+Math.round(v/5)*5;
+function calc(){const e=estilos[s.e];const f=comps[s.c].f*vols[s.v].f;return{p:e.p*f+(s.cab?(e.h>2?120:0):0),h:Math.round(e.h*f*2)/2}}
+const hoje=new Date();
+const dias=[...Array(8)].map((_,i)=>{const d=new Date(hoje);d.setDate(d.getDate()+i+1);return d}).filter(d=>d.getDay()!==0).slice(0,6);
+const ocupado=[[10],[8,9,10,11,12,13],[14,15],[8,9],[],[13,14,15,16]];
+function slots(){const {h}=calc();const out=[];for(let t=8;t<=17;t++){const fim=t+h;let ok=fim<=19;for(let x=t;x<fim;x++)if(ocupado[s.d].includes(Math.floor(x)))ok=false;out.push({t,ok})}return out}
+function render(){
+ const b=$('body');$('prog').innerHTML=[0,1,2,3].map(i=>`<i class="${i<=s.step?'on':''}"></i>`).join('');
+ $('back').style.visibility=s.step?'visible':'hidden';
+ if(s.step===0){$('ttl').textContent='Qual trança você quer?';
+  b.innerHTML='<div class="grid">'+estilos.map((e,i)=>`<button class="opt ${s.e===i?'sel':''}" data-i="${i}">${e.n}<span>a partir de ${brl(e.p*.85)}</span></button>`).join('')+'</div>';
+  b.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{s.e=+o.dataset.i;render()});$('next').disabled=s.e===null;$('next').textContent='Continuar'}
+ if(s.step===1){$('ttl').textContent='Me conta do seu cabelo';const c=calc();
+  b.innerHTML=`<p class="q">Comprimento</p><div class="row">${comps.map((x,i)=>`<button class="chip ${s.c===i?'sel':''}" data-k="c" data-i="${i}">${x.n}</button>`).join('')}</div>
+  <p class="q">Espessura das tranças</p><div class="row">${vols.map((x,i)=>`<button class="chip ${s.v===i?'sel':''}" data-k="v" data-i="${i}">${x.n}</button>`).join('')}</div>
+  <p class="q">Cabelo sintético</p><div class="row"><button class="chip ${s.cab?'sel':''}" data-k="cab" data-i="1">Raquel leva</button><button class="chip ${!s.cab?'sel':''}" data-k="cab" data-i="0">Eu levo</button></div>
+  <div class="est"><small>${estilos[s.e].n}</small><div class="v">${brl(c.p)}</div><small>Tempo estimado: ${String(c.h).replace('.',',')}h</small></div>`;
+  b.querySelectorAll('.chip').forEach(o=>o.onclick=()=>{const k=o.dataset.k;s[k]=k==='cab'?o.dataset.i==='1':+o.dataset.i;s.t=null;render()});$('next').disabled=false}
+ if(s.step===2){$('ttl').textContent='Escolha o dia e horário';const sl=slots();
+  b.innerHTML=`<div class="days">${dias.map((d,i)=>`<button class="day ${s.d===i?'sel':''}" data-i="${i}">${d.toLocaleDateString('pt-BR',{weekday:'short'}).replace('.','')}<b>${d.getDate()}</b></button>`).join('')}</div>
+  <p class="q">Horários que cabem as ${String(calc().h).replace('.',',')}h do seu penteado</p>
+  <div class="slots">${sl.map(x=>`<button class="slot ${s.t===x.t?'sel':''}" data-t="${x.t}" ${x.ok?'':'disabled'}>${x.t}:00</button>`).join('')}</div>
+  <p class="note">Riscados = já ocupados ou não dá tempo de terminar até 19h.</p>`;
+  b.querySelectorAll('.day').forEach(o=>o.onclick=()=>{s.d=+o.dataset.i;s.t=null;render()});
+  b.querySelectorAll('.slot').forEach(o=>o.onclick=()=>{s.t=+o.dataset.t;render()});$('next').disabled=s.t===null;$('next').textContent='Continuar'}
+ if(s.step===3){$('ttl').textContent='Confirma pra mim?';const c=calc();const d=dias[s.d];const dt=d.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'2-digit'});
+  const man=new Date(d);man.setDate(man.getDate()+42);
+  b.innerHTML=`<div class="sum"><div><span>Penteado</span><b>${estilos[s.e].n}</b></div><div><span>Comprimento / espessura</span><b>${comps[s.c].n} · ${vols[s.v].n}</b></div><div><span>Quando</span><b>${dt}, ${s.t}h</b></div><div><span>Total</span><b>${brl(c.p)}</b></div><div><span>Sinal pra reservar (Pix)</span><b>${brl(c.p*.3)}</b></div></div>
+  <p class="q" style="margin-top:16px">O que acontece sozinho depois:</p>
+  <div class="wa">✅ Oi! Seu horário de <b>${estilos[s.e].n}</b> tá confirmado pra ${dt} às ${s.t}h. Vem com o cabelo lavado e seco 💛</div>
+  <div class="auto"><p>🔔 Véspera: lembrete no WhatsApp com endereço</p><p>🗓️ ${man.toLocaleDateString('pt-BR')}: "Tá na hora da manutenção/retirada, quer marcar?"</p><p>📋 Você recebe tudo organizado na sua agenda</p></div>`;
+  $('next').textContent='Pagar sinal e confirmar';$('next').disabled=false}
+ if(s.step===4){$('ttl').textContent='Horário reservado!';
+  b.innerHTML=`<div style="text-align:center;padding:40px 10px"><div style="font-size:54px">💛</div><p class="q" style="font-size:20px">Tudo certo!</p><p style="color:var(--muted)">Na versão real, aqui a cliente paga o Pix e você recebe a notificação. Ninguém precisou te chamar no WhatsApp.</p></div>`;
+  $('next').textContent='Ver de novo'}
+}
+$('next').onclick=()=>{if(s.step===4){Object.assign(s,{step:0,e:null,c:1,v:1,cab:true,d:0,t:null})}else s.step++;render()};
+$('back').onclick=()=>{if(s.step>0)s.step--;render()};
+render();
+</script>
+</body>
+</html>
