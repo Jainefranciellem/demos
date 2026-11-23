@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Cursos Enf. Genisson</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#F3F5F8; --card:#FFFFFF; --ink:#0E1B2C; --muted:#5E6B7D; --line:#E2E7EE; --soft:#EEF2F7;
+ --navy:#0E1B2C; --navy2:#1B2D45; --orange:#F26B1D; --orange-soft:#FFF1E8; --teal:#0E9F8F; --teal-soft:#E4F6F3;
+ --red:#D63B3B; --red-soft:#FCEBEB; --amber:#C98A12;
+ --f:'Plus Jakarta Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+ color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:15px;line-height:1.45}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.mono{font-family:var(--mono)}
+
+.top{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff;display:flex;align-items:center;gap:14px;padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:16px;letter-spacing:-.01em;white-space:nowrap}
+.logo i{width:30px;height:30px;border-radius:9px;background:var(--orange);display:grid;place-items:center;font-style:normal}
+.logo small{font-weight:500;color:#aebbd0;margin-left:2px}
+.proto{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.12);border-radius:99px;padding:4px 10px;white-space:nowrap}
+.sw{margin-left:auto;display:flex;background:rgba(255,255,255,.1);border-radius:99px;padding:3px}
+.sw button{color:#cfd8e4;font-size:13px;font-weight:700;padding:6px 14px;border-radius:99px;white-space:nowrap}
+.sw button.on{background:#fff;color:var(--navy)}
+@media(max-width:640px){.proto{display:none}.logo small{display:none}}
+
+.app{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:calc(100vh - 52px)}
+.side{background:var(--card);border-right:1px solid var(--line);padding:18px 12px;display:flex;flex-direction:column;gap:4px}
+.side button{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;font-weight:600;color:var(--muted);text-align:left;position:relative}
+.side button svg{width:19px;height:19px;flex:none}
+.side button.on{background:var(--orange-soft);color:var(--orange)}
+.side .badge{margin-left:auto;background:var(--orange);color:#fff;font-size:11px;border-radius:99px;padding:1px 7px}
+.side .count{margin-top:auto;background:var(--navy);color:#fff;border-radius:14px;padding:14px;font-size:13px}
+.side .count b{display:block;font-size:15px;margin-bottom:4px}
+.side .count small{color:#aebbd0}
+main{padding:26px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px));min-width:0}
+.inner{max-width:1000px;margin:0 auto}
+@media(max-width:820px){
+ .app{grid-template-columns:1fr}
+ .side{position:fixed;bottom:0;left:0;right:0;z-index:20;flex-direction:row;justify-content:space-around;border-right:0;border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+ .side button{flex-direction:column;gap:3px;font-size:11px;padding:6px 6px}
+ .side .badge{position:absolute;top:0;right:2px;margin:0}
+ .side .count{display:none}
+ main{padding-bottom:96px}
+}
+
+h1{font-size:clamp(24px,3vw,30px);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+h2{font-size:18px;font-weight:800;margin-bottom:12px}
+.sub{color:var(--muted);margin-top:4px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.grid{display:grid;gap:14px}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:820px){.g3,.g2{grid-template-columns:1fr}}
+.mt{margin-top:18px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--orange);color:#fff;font-weight:700;padding:11px 18px;border-radius:11px}
+.btn:hover{filter:brightness(1.05)}
+.btn.ghost{background:var(--soft);color:var(--ink)}
+.btn.dark{background:var(--navy)}
+.btn.sm{padding:8px 13px;font-size:13.5px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;border-radius:99px;padding:3px 9px;background:var(--soft);color:var(--muted);white-space:nowrap}
+.pill.ok{background:var(--teal-soft);color:var(--teal)}
+.pill.or{background:var(--orange-soft);color:var(--orange)}
+.pill.rd{background:var(--red-soft);color:var(--red)}
+.bar{height:8px;background:var(--soft);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--teal);border-radius:99px;transition:width .5s}
+.demo-note{font-size:12.5px;color:var(--muted);margin-top:10px}
+.link{color:var(--orange);font-weight:700;text-decoration:underline}
+
+/* vitrine */
+.hero{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:18px;padding:24px;position:relative;overflow:hidden}
+.hero:after{content:'';position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;background:var(--orange);opacity:.18}
+.hero .sub{color:#b9c6d8;max-width:60ch}
+.hero .ek{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#F7A36F;font-weight:800}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 14px}
+.chip{padding:8px 14px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-weight:700;font-size:13.5px;color:var(--muted)}
+.chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.cc{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.cover{aspect-ratio:16/8;position:relative;display:flex;align-items:flex-end;padding:12px;color:#fff;font-weight:800;font-size:13px;letter-spacing:.04em}
+.cover svg{position:absolute;right:12px;top:12px;width:44px;height:44px;opacity:.9}
+.cc .b{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cc h3{font-size:15.5px;line-height:1.25}
+.cc .meta{font-size:12.5px;color:var(--muted)}
+.cc .ft{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;gap:8px}
+.price{font-size:20px;font-weight:800}
+.price s{font-size:13px;color:var(--muted);font-weight:500;margin-right:4px}
+.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.pk{border-radius:16px;padding:18px;border:1.5px solid var(--line);background:var(--card);display:flex;flex-direction:column;gap:8px}
+.pk.hot{border-color:var(--orange);background:linear-gradient(180deg,#fff,var(--orange-soft))}
+.pk.ment{background:var(--navy);color:#fff;border-color:var(--navy)}
+.pk.ment .sub{color:#b9c6d8}
+.pk ul{list-style:none;font-size:13.5px;display:grid;gap:3px}
+.pk li:before{content:'✓ ';color:var(--teal);font-weight:800}
+.pk.ment li:before{color:#F7A36F}
+
+/* modal */
+.ov{position:fixed;inset:0;background:rgba(14,27,44,.55);z-index:40;display:grid;place-items:center;padding:16px}
+.modal{background:var(--card);border-radius:18px;width:min(440px,100%);max-height:calc(100vh - 32px);overflow:auto;padding:20px}
+.modal h2{margin-bottom:4px}
+.sum{background:var(--soft);border-radius:12px;padding:12px;margin:14px 0;font-size:14px}
+.sum div{display:flex;justify-content:space-between;gap:10px}
+.sum .tot{font-weight:800;font-size:17px;border-top:1px dashed #c9d3df;margin-top:8px;padding-top:8px}
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pay button{border:1.5px solid var(--line);border-radius:11px;padding:10px;font-weight:700}
+.pay button.on{border-color:var(--orange);background:var(--orange-soft);color:var(--orange)}
+.pix{display:flex;gap:14px;align-items:center;margin-top:14px;font-size:13px;color:var(--muted)}
+.wa{background:#E7F7EE;border-radius:12px;padding:10px 12px;font-size:13.5px;margin-top:10px;border-left:3px solid #25A35A}
+
+/* curso */
+.ch{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start}
+@media(max-width:900px){.ch{grid-template-columns:1fr}}
+.player{aspect-ratio:16/9;max-width:100%;border-radius:16px;background:radial-gradient(circle at 70% 30%,#2a4365,#0e1b2c 70%);position:relative;overflow:hidden;color:#fff;display:grid;place-items:center}
+.player .big{width:74px;height:74px;border-radius:50%;background:var(--orange);display:grid;place-items:center;box-shadow:0 10px 30px rgba(242,107,29,.4)}
+.player .cap{position:absolute;left:18px;top:16px;font-size:13px;color:#c8d4e5}
+.player .ctl{position:absolute;left:0;right:0;bottom:0;padding:12px 16px;background:linear-gradient(transparent,rgba(0,0,0,.55));display:flex;gap:12px;align-items:center;font-size:12px}
+.player .ctl .bar{flex:1;background:rgba(255,255,255,.25)}
+.player .ctl .bar i{background:var(--orange);transition:none}
+.player .wm{position:absolute;right:16px;top:16px;font-size:11px;opacity:.45}
+@media(max-width:560px){.player .cap{display:none}}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:16px 0 14px}
+.tabs button{padding:9px 14px;font-weight:700;color:var(--muted);border-bottom:2.5px solid transparent;margin-bottom:-1px}
+.tabs button.on{color:var(--orange);border-color:var(--orange)}
+.slide{aspect-ratio:16/9;border-radius:12px;background:#fff;border:1px solid var(--line);padding:clamp(14px,3vw,28px);display:flex;flex-direction:column;justify-content:center;gap:10px;position:relative;overflow:hidden}
+.slide:before{content:'';position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--orange)}
+.slide h4{font-size:clamp(17px,2.4vw,24px);letter-spacing:-.01em}
+.slide ul{padding-left:18px;color:var(--muted);font-size:clamp(13px,1.6vw,15px);display:grid;gap:4px}
+.slide .no{position:absolute;right:14px;bottom:10px;font-size:11px;color:var(--muted)}
+.file{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px}
+.file .ic{width:40px;height:46px;border-radius:6px;background:var(--red-soft);color:var(--red);font-weight:800;font-size:11px;display:grid;place-items:center;flex:none}
+.file .ic.ppt{background:var(--orange-soft);color:var(--orange)}
+.file .t{flex:1;min-width:0}
+.file small{color:var(--muted)}
+.les{display:flex;align-items:center;gap:12px;padding:11px 12px;width:100%;text-align:left;border-radius:10px}
+.les:hover{background:var(--soft)}
+.les.cur{background:var(--orange-soft)}
+.les .ic{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--soft);flex:none;font-size:12px}
+.les.ok .ic{background:var(--teal);color:#fff}
+.les .t{flex:1;min-width:0;font-size:14px}
+.les small{color:var(--muted)}
+.les.exam .ic{background:var(--orange-soft);color:var(--orange)}
+.les[disabled]{cursor:not-allowed;opacity:.5}
+
+.my{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center}
+.my .cover{width:110px;aspect-ratio:16/10;border-radius:10px;padding:0}
+.my .cover svg{width:34px;height:34px;right:50%;top:50%;transform:translate(50%,-50%)}
+@media(max-width:560px){.my{grid-template-columns:auto minmax(0,1fr)}.my>.btn{grid-column:1/-1}}
+
+/* prova */
+.q{margin-bottom:14px}
+.q p{font-weight:700;margin-bottom:10px}
+.opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;padding:11px 13px;border:1.5px solid var(--line);border-radius:11px;margin-bottom:7px;background:#fff}
+.opt:hover{border-color:#c5cfdc}
+.opt .l{width:24px;height:24px;border-radius:7px;background:var(--soft);display:grid;place-items:center;font-weight:800;font-size:12px;flex:none}
+.opt.sel{border-color:var(--orange);background:var(--orange-soft)}
+.opt.sel .l{background:var(--orange);color:#fff}
+.opt.right{border-color:var(--teal);background:var(--teal-soft)}
+.opt.right .l{background:var(--teal);color:#fff}
+.opt.wrong{border-color:var(--red);background:var(--red-soft)}
+.opt.wrong .l{background:var(--red);color:#fff}
+.why{font-size:13.5px;color:var(--muted);background:var(--soft);border-radius:10px;padding:9px 12px;margin-top:4px}
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.timer{font-family:var(--mono);font-size:18px;background:var(--navy);color:#fff;padding:6px 12px;border-radius:10px}
+.result{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center}
+@media(max-width:480px){.result{grid-template-columns:1fr}}
+.score{font-size:54px;font-weight:800;line-height:1}
+.score small{font-size:18px;color:var(--muted)}
+.linkbox{display:flex;gap:8px;align-items:center;background:#fff;border:1.5px dashed var(--teal);border-radius:11px;padding:9px 12px;margin-top:12px;font-size:13px;flex-wrap:wrap}
+.linkbox .mono{flex:1;min-width:0;overflow-wrap:anywhere}
+
+/* certificado */
+.cert{background:#fff;border-radius:6px;padding:clamp(18px,4vw,40px);border:1px solid var(--line);position:relative;box-shadow:0 20px 50px rgba(14,27,44,.12);overflow:hidden}
+.cert:before{content:'';position:absolute;inset:10px;border:2px solid var(--navy);border-radius:3px;pointer-events:none}
+.cert:after{content:'';position:absolute;inset:15px;border:1px solid var(--orange);border-radius:2px;pointer-events:none}
+.cert .in{position:relative;z-index:1;text-align:center;padding:10px}
+.cert .k{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);font-weight:800}
+.cert h3{font-size:clamp(22px,3.6vw,32px);font-weight:800;letter-spacing:-.02em;margin:8px 0 14px}
+.cert .nm{font-size:clamp(22px,3.6vw,32px);font-weight:700;border-bottom:1.5px solid var(--line);display:inline-block;padding:0 24px 4px;margin:6px 0 12px;min-width:60%}
+.cert .ft{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-top:22px;text-align:left;flex-wrap:wrap}
+.cert .sig{border-top:1px solid var(--ink);padding-top:4px;font-size:12.5px;min-width:180px}
+.cert .qr{display:flex;gap:10px;align-items:center;font-size:11.5px;color:var(--muted)}
+.field{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.field input{flex:1;min-width:200px;border:1.5px solid var(--line);border-radius:11px;padding:10px 12px;background:#fff}
+
+/* professor */
+.kpi b{display:block;font-size:26px;font-weight:800;line-height:1.15}
+.kpi small{color:var(--muted);font-size:13px}
+.kpi .d{font-size:12px;font-weight:700;color:var(--teal)}
+.tb{width:100%;border-collapse:collapse;font-size:14px}
+.tb td,.tb th{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+.tb th{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.scroll{overflow-x:auto}
+.av{width:32px;height:32px;border-radius:50%;display:inline-grid;place-items:center;font-weight:800;font-size:12px;color:#fff;margin-right:8px;vertical-align:middle}
+.weak li{list-style:none;display:grid;grid-template-columns:minmax(0,1fr) 46px;gap:8px;align-items:center;margin-bottom:10px;font-size:14px}
+.weak .bar i{background:var(--red)}
+.weak .mid .bar i{background:var(--amber)}
+.weak .good .bar i{background:var(--teal)}
+.auto{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+.auto:last-child{border-bottom:0}
+.auto .t{flex:1;min-width:0}
+.auto small{color:var(--muted);display:block}
+.tg{width:42px;height:24px;border-radius:99px;background:#cfd7e2;position:relative;flex:none;transition:.2s}
+.tg:after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s}
+.tg.on{background:var(--teal)}
+.tg.on:after{left:21px}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:640px){.form{grid-template-columns:1fr}}
+.form label{display:grid;gap:5px;font-size:13px;font-weight:700;color:var(--muted)}
+.form input,.form select{border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff;color:var(--ink);font-weight:500;font-size:15px}
+.drop{border:1.5px dashed #c5cfdc;border-radius:12px;padding:14px;text-align:center;font-size:13.5px;color:var(--muted);background:#fafbfd}
+.drop.ok{border-color:var(--teal);color:var(--teal);background:var(--teal-soft)}
+.chart{display:flex;align-items:flex-end;gap:8px;height:130px;padding-top:10px}
+.chart div{flex:1;background:var(--orange);border-radius:6px 6px 0 0;position:relative;min-width:0}
+.chart div.past{background:#f7b48b}
+.chart span{position:absolute;bottom:-20px;left:0;right:0;text-align:center;font-size:11px;color:var(--muted)}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:12px 18px;border-radius:12px;font-weight:600;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:60;max-width:calc(100% - 32px)}
+.toast.on{opacity:1;transform:translateX(-50%)}
+@media(max-width:820px){.toast{bottom:84px}}
+.lockbox{text-align:center;padding:30px 18px}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="logo"><i>✚</i>Enf. Genisson<small>· cursos de saúde</small></div>
+ <div class="proto">Protótipo · fran.automacao</div>
+ <div class="sw" role="tablist" aria-label="Visão">
+  <button id="vAluno" class="on" onclick="setView('aluno')">Aluno</button>
+  <button id="vProf" onclick="setView('prof')">Professor</button>
+ </div>
+</header>
+<div class="app">
+ <nav class="side" id="side"></nav>
+ <main><div class="inner" id="main"></div></main>
+</div>
+<div id="modal"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const IC={
+ shop:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9M3 9h18v11H3zM9 13h6"/></svg>',
+ book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M10 8.5l5 2.5-5 2.5z" fill="currentColor"/><path d="M8 21h8"/></svg>',
+ sim:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg>',
+ cert:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg>',
+ dash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
+ plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/></svg>',
+ users:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M17 4a4 4 0 0 1 0 8M22 21c0-3-1.5-5-4-6"/></svg>',
+ bolt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>',
+ play:'<svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>',
+ heart:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/><path d="M6 12h3l2-3 2 6 2-3h3"/></svg>',
+ trauma:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg>',
+ law:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0zM8 21h8"/></svg>',
+ drop:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2.7S5 10 5 14.5a7 7 0 0 0 14 0C19 10 12 2.7 12 2.7z"/><path d="M9 15h6M12 12v6"/></svg>',
+ brain:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 6 1V5a3 3 0 0 0-3-1zM15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-6 1"/></svg>',
+ lung:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3v9M12 12c-2-2-4-1-4-1v8a2 2 0 0 1-4 0V11c0-3 2-5 4-5M12 12c2-2 4-1 4-1v8a2 2 0 0 0 4 0V11c0-3-2-5-4-5"/></svg>',
+ baby:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M9.5 15a3.5 3.5 0 0 0 5 0"/></svg>',
+ pulse:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>'
+};
+// ---------- catálogo ----------
+const Q=(tp,q,o,c,w)=>({tp,q,o,c,w});
+let COURSES=[
+ {id:'pcr',t:'Atendimento à PCR no adulto',pub:['med','enf'],h:6,price:39,ic:'heart',col:'#C2410C,#F26B1D',
+  aulas:['Cadeia de sobrevivência e reconhecimento da PCR','RCP de alta qualidade','DEA e ritmos chocáveis','Drogas na PCR e cuidados pós-parada'],
+  bank:[Q('RCP','Na RCP de alta qualidade em adulto, qual a frequência de compressões?',['60 a 80/min','80 a 100/min','100 a 120/min','Acima de 140/min'],2,'Diretriz AHA: 100 a 120 compressões por minuto, com retorno total do tórax.'),
+   Q('RCP','Sem via aérea avançada, qual a relação compressão-ventilação em adulto?',['15:2','30:2','5:1','Ventilação contínua'],1,'30:2, com 1 ou 2 socorristas.'),
+   Q('DEA','Quais ritmos são chocáveis?',['Assistolia e AESP','FV e TV sem pulso','Bradicardia sinusal e AESP','Apenas assistolia'],1,'FV e TV sem pulso. Assistolia e AESP não recebem choque.'),
+   Q('Drogas','Qual a dose de adrenalina na PCR em adulto?',['0,1 mg a cada 10 min','1 mg IV/IO a cada 3 a 5 min','5 mg em dose única','1 mg só após o 5º choque'],1,'1 mg IV/IO a cada 3 a 5 minutos.'),
+   Q('Avaliação','Por quanto tempo, no máximo, checar pulso e respiração?',['5 segundos','10 segundos','30 segundos','1 minuto'],1,'No máximo 10 segundos: na dúvida, inicia as compressões.')]},
+ {id:'trauma',t:'Trauma no pré-hospitalar: XABCDE',pub:['med','enf','tec'],h:5,price:39,ic:'trauma',col:'#9F1239,#E11D48',
+  aulas:['X: hemorragia exsanguinante e torniquete','A e B: via aérea e ventilação','C: choque hemorrágico','D e E: neurológico e exposição'],
+  bank:[Q('XABCDE','No XABCDE, o que significa o "X"?',['Exame neurológico','Exposição do paciente','Controle de hemorragia exsanguinante','Raio-X de tórax'],2,'X = hemorragia externa grave, controlada antes da via aérea.'),
+   Q('Hemorragia','Quando indicar o torniquete em hemorragia de membro?',['Sempre, em qualquer sangramento','Quando a compressão direta não controla a hemorragia grave','Só em fratura exposta','Nunca no pré-hospitalar'],1,'Hemorragia grave de membro que não para com compressão direta.'),
+   Q('XABCDE','Depois do X, o que vem no A?',['Avaliação da dor','Via aérea com restrição da coluna cervical','Acesso venoso','Analgesia'],1,'A = via aérea com proteção/restrição da coluna cervical.'),
+   Q('Choque','Qual costuma ser um sinal precoce de choque hemorrágico?',['Hipotensão grave','Taquicardia','Bradicardia','Pupilas fixas'],1,'Taquicardia aparece cedo. A hipotensão é sinal tardio.'),
+   Q('Neuro','Qual a menor pontuação possível na Escala de Coma de Glasgow?',['0','1','3','5'],2,'A escala vai de 3 a 15.')]},
+ {id:'legis',t:'Legislação do SAMU sem decoreba',pub:['med','enf'],h:4,price:39,ic:'law',col:'#1E3A8A,#3B6FD8',
+  aulas:['Portaria 2048/2002 na prática','Rede de Atenção às Urgências (1600/2011)','Tipos de unidade e tripulação','Regulação médica'],
+  bank:[Q('Portarias','Qual portaria aprovou o Regulamento Técnico dos Sistemas Estaduais de Urgência e Emergência?',['Portaria GM/MS 2048/2002','Portaria GM/MS 1600/2011','Lei 8080/1990','RDC 50/2002'],0,'Portaria GM/MS nº 2048/2002. A 1600/2011 é a da Rede de Atenção às Urgências: pegadinha clássica.'),
+   Q('Portarias','A Portaria GM/MS 1600/2011 trata de:',['Regulamento técnico das ambulâncias','Política Nacional de Atenção às Urgências e Rede de Atenção às Urgências no SUS','Lei orgânica da saúde','Normas de construção de hospitais'],1,'Reformula a Política Nacional de Atenção às Urgências e institui a Rede de Atenção às Urgências.'),
+   Q('SAMU','Qual o número nacional do SAMU?',['190','192','193','199'],1,'192.'),
+   Q('Unidades','Pela Portaria 2048, a Unidade de Suporte Avançado (USA) é tripulada por:',['Condutor e técnico de enfermagem','Médico, enfermeiro e condutor','Apenas médico e condutor','Bombeiro e técnico'],1,'USA: condutor, enfermeiro e médico.'),
+   Q('Unidades','E a Unidade de Suporte Básico (USB)?',['Condutor e técnico ou auxiliar de enfermagem','Médico e enfermeiro','Somente condutor','Enfermeiro e médico regulador'],0,'USB: condutor e técnico ou auxiliar de enfermagem.')]},
+ {id:'calc',t:'Cálculo de medicação e gotejamento',pub:['enf','tec'],h:4,price:39,ic:'drop',col:'#0F766E,#0E9F8F',
+  aulas:['Regra de três sem medo','Macro e microgotas','Diluição e rediluição','Questões de prova comentadas'],
+  bank:[Q('Conversão','1 mL corresponde a quantas macrogotas?',['10','20','40','60'],1,'1 mL = 20 gotas (macrogotas).'),
+   Q('Conversão','1 mL corresponde a quantas microgotas?',['20','40','60','100'],2,'1 mL = 60 microgotas.'),
+   Q('Gotejamento','SF 0,9% 500 mL em 8 h. Quantas gotas por minuto (macrogotas)?',['Cerca de 14','Cerca de 21','Cerca de 42','Cerca de 63'],1,'Gotas/min = V ÷ (T × 3) = 500 ÷ 24 ≈ 21.'),
+   Q('Gotejamento','O mesmo soro (500 mL em 8 h) em microgotas por minuto:',['Cerca de 21','Cerca de 42','Cerca de 63','Cerca de 125'],2,'Microgotas/min = V ÷ T = 500 ÷ 8 ≈ 63.'),
+   Q('Regra de três','Prescrito 250 mg. Disponível: 500 mg em 5 mL. Quanto aspirar?',['1 mL','2,5 mL','5 mL','10 mL'],1,'500 mg está para 5 mL, assim como 250 mg está para 2,5 mL.')]},
+ {id:'glasgow',t:'Escala de Glasgow e avaliação neurológica',pub:['med','enf','tec'],h:3,price:39,ic:'brain',col:'#6D28D9,#8B5CF6',
+  aulas:['Abertura ocular','Resposta verbal','Resposta motora','Glasgow na prática do pré-hospitalar'],
+  bank:[Q('Glasgow','Qual a faixa de pontuação da Escala de Glasgow?',['0 a 10','1 a 15','3 a 15','5 a 20'],2,'De 3 a 15.'),
+   Q('Glasgow','Glasgow igual ou menor que 8 costuma indicar:',['Alta imediata','Necessidade de via aérea definitiva','Só observação','Uso de colar cervical apenas'],1,'Glasgow ≤ 8: proteger a via aérea (via aérea definitiva).'),
+   Q('Ocular','Abertura ocular espontânea vale quantos pontos?',['1','2','3','4'],3,'Espontânea = 4.'),
+   Q('Motora','"Obedece a comandos" na resposta motora vale:',['4','5','6','3'],2,'Obedece a comandos = 6, a pontuação máxima motora.'),
+   Q('Verbal','Resposta verbal orientada vale:',['3','4','5','6'],2,'Orientado = 5.')]},
+ {id:'vm',t:'Ventilação mecânica básica',pub:['med','enf'],h:6,price:39,ic:'lung',col:'#334155,#64748B',soon:true},
+ {id:'sv',t:'Sinais vitais na prática',pub:['tec'],h:3,price:39,ic:'pulse',col:'#B45309,#D97706',soon:true},
+ {id:'ped',t:'Urgências pediátricas',pub:['med','enf','tec'],h:6,price:39,ic:'baby',col:'#BE185D,#EC4899',soon:true}
+];
+const PACKS=[
+ {id:'pk-ue',t:'Pacote Urgência e Emergência',items:['pcr','trauma','legis'],price:99,hot:true},
+ {id:'pk-enf',t:'Pacote Enfermagem',items:['pcr','trauma','calc','glasgow'],price:119}
+];
+const MENTOR={id:'mentoria',t:'Mentoria SAMU 2027',price:397};
+const PUB={todos:'Todos',med:'Médicos',enf:'Enfermeiros',tec:'Técnicos de enfermagem'};
+const MIN=7;
+const brl=v=>'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:Number.isInteger(v)?0:2,maximumFractionDigits:2});
+const C=id=>COURSES.find(c=>c.id===id);
+
+let S={view:'aluno',tab:'loja',filter:'todos',owned:{pcr:true},done:{'pcr-0':true,'pcr-1':true},grade:{},course:null,lesson:0,mat:'video',slide:0,quiz:null,sim:null,certOf:null,
+ name:'Dra. Ana Souza',auto:{compra:true,pix:true,parou:true,reprov:true,cert:true,upsell:true},sales:[],newUp:{}};
+const $=s=>document.querySelector(s);
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),2600)}
+function setView(v){S.view=v;S.tab=v==='aluno'?'loja':'painel';S.course=null;S.quiz=null;stopTimer();$('#vAluno').classList.toggle('on',v==='aluno');$('#vProf').classList.toggle('on',v==='prof');render();scrollTo(0,0)}
+function go(t){S.tab=t;S.course=null;S.quiz=null;S.certOf=null;stopTimer();render();scrollTo(0,0)}
+const prog=c=>Math.round(c.aulas.filter((_,i)=>S.done[c.id+'-'+i]).length/c.aulas.length*100);
+const passed=id=>(S.grade[id]??0)>=MIN;
+const certs=()=>COURSES.filter(c=>passed(c.id));
+
+function side(){
+ const n=Object.keys(S.owned).length;
+ const items=S.view==='aluno'
+  ?[['loja','Cursos',IC.shop],['meus','Meus cursos',IC.book,n],['simulado','Simulado',IC.sim],['certs','Certificados',IC.cert,certs().length||'']]
+  :[['painel','Vendas',IC.dash],['cursos','Cursos',IC.plus],['alunos','Alunos',IC.users],['autom','Automações',IC.bolt]];
+ return items.map(([k,l,i,b])=>`<button class="${S.tab===k?'on':''}" onclick="go('${k}')">${i}<span>${l}</span>${b?`<span class="badge">${b}</span>`:''}</button>`).join('')+
+  (S.view==='aluno'?`<div class="count"><b>Mentoria SAMU 2027</b><small>Turma personalizada para os médicos chamados na seleção.</small><div style="margin-top:10px"><button class="btn sm" onclick="buy('mentoria')">Quero entrar</button></div></div>`:'');
+}
+function cover(c,big){return `<div class="cover" style="background:linear-gradient(135deg,${c.col})">${IC[c.ic]}${big?'':`<span>${c.aulas?c.h+'h · '+c.aulas.length+' aulas':'lançamento em breve'}</span>`}</div>`}
+
+// ---------- loja ----------
+function loja(){
+ const list=COURSES.filter(c=>S.filter==='todos'||c.pub.includes(S.filter));
+ return `<div class="hero"><div class="ek">Cursos para profissionais da saúde</div><h1 style="margin:8px 0 8px">Aprenda com quem está no plantão<br>e passa gente na prova.</h1><p class="sub">Videoaulas, slides e PDF de cada aula. Fez a prova, tirou 7, o certificado sai na hora.</p></div>
+ <div class="chips">${Object.entries(PUB).map(([k,v])=>`<button class="chip ${S.filter===k?'on':''}" onclick="S.filter='${k}';render()">${v}</button>`).join('')}</div>
+ <div class="courses">${list.map(c=>`<div class="cc">${cover(c)}<div class="b"><h3>${c.t}</h3><div class="meta">${c.pub.map(p=>PUB[p]).join(' · ')}</div>
+  <div class="ft">${c.soon?`<span class="pill">Em breve</span><button class="btn ghost sm" onclick="toast('Você será avisado no WhatsApp quando lançar')">Avise-me</button>`
+  :S.owned[c.id]?`<span class="pill ok">✓ Você tem</span><button class="btn dark sm" onclick="openCourse('${c.id}')">Assistir</button>`
+  :`<span class="price">${brl(c.price)}</span><button class="btn sm" onclick="buy('${c.id}')">Comprar</button>`}</div></div></div>`).join('')}</div>
+ <h2 class="mt" style="margin-top:28px">Pacotes</h2>
+ <div class="packs">${PACKS.map(p=>{const full=p.items.reduce((s,i)=>s+C(i).price,0);return `<div class="pk ${p.hot?'hot':''}">${p.hot?'<span class="pill or" style="align-self:flex-start">Mais vendido</span>':''}<b style="font-size:17px">${p.t}</b><ul>${p.items.map(i=>`<li>${C(i).t}</li>`).join('')}</ul><div class="price" style="margin-top:auto"><s>${brl(full)}</s>${brl(p.price)}</div><button class="btn ${p.hot?'':'dark'}" onclick="buy('${p.id}')">Quero o pacote</button></div>`}).join('')}
+  <div class="pk ment"><span class="pill or" style="align-self:flex-start">Vagas limitadas</span><b style="font-size:17px">${MENTOR.t}</b><p class="sub" style="font-size:13.5px">Acompanhamento personalizado para a seleção do SAMU.</p><ul><li>Encontros ao vivo em grupo pequeno</li><li>Todos os cursos de urgência inclusos</li><li>Simulados no formato da prova</li><li>Plano de estudo até a data da prova</li></ul><div class="price" style="margin-top:auto">${brl(MENTOR.price)}</div><button class="btn" onclick="buy('mentoria')">Quero entrar</button></div>
+ </div>
+ <p class="demo-note">Preços, cursos e pacotes de exemplo. Você define tudo isso pelo seu painel.</p>`;
+}
+function item(id){const c=C(id);if(c)return{t:c.t,price:c.price,courses:[id]};const p=PACKS.find(p=>p.id===id);if(p)return{t:p.t,price:p.price,courses:p.items};return{t:MENTOR.t,price:MENTOR.price,courses:['pcr','trauma','legis'],ment:true}}
+let PAY='pix';
+function buy(id,step){
+ const it=item(id);
+ if(!step){$('#modal').innerHTML=`<div class="ov" onclick="if(event.target===this)closeM()"><div class="modal" role="dialog" aria-label="Pagamento">
+  <h2>Finalizar compra</h2><p class="sub">Acesso liberado na hora, direto no seu WhatsApp e e-mail.</p>
+  <div class="sum"><div><span>${it.t}</span><b>${brl(it.price)}</b></div>${it.courses.length>1?`<div style="font-size:12.5px;color:var(--muted)"><span>${it.courses.length} cursos inclusos</span></div>`:''}<div class="tot"><span>Total</span><span>${brl(it.price)}</span></div></div>
+  <div class="pay"><button class="${PAY==='pix'?'on':''}" onclick="PAY='pix';buy('${id}')">Pix</button><button class="${PAY==='card'?'on':''}" onclick="PAY='card';buy('${id}')">Cartão${it.price>90?' em até 3x':''}</button></div>
+  ${PAY==='pix'?`<div class="pix">${qr('pix'+id,64)}<div>Escaneie o QR ou copie o código Pix.<br><b style="color:var(--ink)">O acesso libera sozinho quando o Pix cai.</b></div></div>`:`<div class="form" style="margin-top:14px;grid-template-columns:1fr"><label>Número do cartão<input placeholder="0000 0000 0000 0000" disabled></label></div>`}
+  <div class="row" style="margin-top:16px"><button class="btn" style="flex:1" onclick="buy('${id}',1)">Simular pagamento aprovado</button><button class="btn ghost" onclick="closeM()">Cancelar</button></div>
+  <p class="demo-note">Demo: nenhum pagamento é feito de verdade.</p></div></div>`;return}
+ it.courses.forEach(c=>S.owned[c]=true);S.sales.unshift({t:it.t,v:it.price,who:S.name});
+ $('#modal').innerHTML=`<div class="ov" onclick="if(event.target===this)closeM()"><div class="modal"><span class="pill ok">✓ Pagamento aprovado</span><h2 style="margin-top:10px">Pronto! Seu acesso já está liberado.</h2>
+  <p class="sub">Mensagem que chega no WhatsApp do aluno, sozinha:</p><div class="wa">Oi, ${S.name.split(' ')[1]}! 🎉 Sua compra de <b>${it.t}</b> foi aprovada. Seu acesso já está liberado: é só entrar pelo link e começar pela aula 1. Qualquer dúvida, me chama aqui.</div>
+  <div class="row" style="margin-top:16px"><button class="btn" onclick="closeM();${it.ment?"go('simulado')":`openCourse('${it.courses[0]}')`}">${it.ment?'Ir para os simulados':'Começar agora'}</button><button class="btn ghost" onclick="closeM();render()">Continuar vendo</button></div></div></div>`;
+ render();
+}
+function closeM(){$('#modal').innerHTML=''}
+
+// ---------- meus cursos / aula ----------
+function meus(){
+ const own=COURSES.filter(c=>S.owned[c.id]);
+ return `<h1>Meus cursos</h1><p class="sub">Assista as aulas, baixe o material e faça a prova final.</p><div class="grid mt">${own.map(c=>{const p=prog(c);return `<div class="card my">${cover(c,1)}<div style="min-width:0"><b>${c.t}</b><div class="row" style="margin:6px 0">${passed(c.id)?`<span class="pill ok">✓ Aprovado · nota ${fmtG(S.grade[c.id])}</span>`:p===100?'<span class="pill or">Prova liberada</span>':`<span class="pill">${p}% assistido</span>`}</div><div class="bar"><i style="width:${p}%"></i></div></div><button class="btn ${passed(c.id)?'ghost':''}" onclick="${passed(c.id)?`openCert('${c.id}')`:`openCourse('${c.id}')`}">${passed(c.id)?'Ver certificado':p?'Continuar':'Começar'}</button></div>`}).join('')}</div>
+ <p class="demo-note">Quer ver a loja funcionando? <button class="link" onclick="go('loja')">Compre outro curso</button> com o pagamento simulado.</p>`;
+}
+function openCourse(id){const c=C(id);S.tab='meus';S.course=id;S.quiz=null;S.mat='video';S.slide=0;const i=c.aulas.findIndex((_,i)=>!S.done[id+'-'+i]);S.lesson=i<0?0:i;render();scrollTo(0,0)}
+function slides(c,i){const t=c.aulas[i];return [
+ {h:t,b:[c.t,`Aula ${i+1} de ${c.aulas.length}`,'Enf. Genisson']},
+ {h:'Pontos-chave',b:['O que fazer primeiro, e por quê','Os erros mais comuns no plantão','O que não pode faltar no registro']},
+ {h:'Como cai na prova',b:['Pegadinhas que mais derrubam','Palavras-chave no enunciado','2 questões comentadas no fim da aula']}]}
+function courseView(){
+ const c=C(S.course),i=S.lesson,id=c.id+'-'+i,dn=S.done[id],all=prog(c)===100;
+ const sl=slides(c,i),s=sl[S.slide];
+ let mat='';
+ if(S.mat==='video')mat=`<div class="player" id="pl"><span class="cap">Aula ${i+1} · ${c.aulas[i]}</span><span class="wm mono">${S.name} · protegido</span>
+  <button class="big" style="${dn?'opacity:.5':''}" onclick="play()" aria-label="Assistir">${IC.play}</button>
+  <div class="ctl"><span id="tcur" class="mono">${dn?'52:10':'00:00'}</span><div class="bar"><i id="pbar" style="width:${dn?100:0}%"></i></div><span class="mono">52:10</span></div></div>
+  <p class="demo-note">O vídeo fica numa hospedagem protegida (Panda/Bunny), com o nome do aluno marcado na tela.</p>`;
+ else if(S.mat==='slides')mat=`<div class="slide"><h4>${s.h}</h4><ul>${s.b.map(x=>`<li>${x}</li>`).join('')}</ul><span class="no mono">${S.slide+1}/${sl.length}</span></div>
+  <div class="row" style="justify-content:space-between;margin-top:10px"><button class="btn ghost sm" ${S.slide?'':'disabled'} onclick="S.slide--;render()">← Anterior</button><button class="btn ghost sm" onclick="toast('Na versão real, baixa os slides em PDF')">Baixar slides</button><button class="btn ghost sm" ${S.slide<sl.length-1?'':'disabled'} onclick="S.slide++;render()">Próximo →</button></div>`;
+ else mat=`<div class="file"><span class="ic">PDF</span><span class="t"><b>Resumo da aula ${i+1}</b><br><small>4 páginas · 820 KB</small></span><button class="btn ghost sm" onclick="toast('Na versão real, abre o PDF')">Baixar</button></div>
+  <div class="file"><span class="ic ppt">PPT</span><span class="t"><b>Slides da aula ${i+1}</b><br><small>${sl.length} slides · PDF</small></span><button class="btn ghost sm" onclick="toast('Na versão real, abre o PDF')">Baixar</button></div>
+  <div class="file"><span class="ic">PDF</span><span class="t"><b>Mapa mental do curso</b><br><small>1 página</small></span><button class="btn ghost sm" onclick="toast('Na versão real, abre o PDF')">Baixar</button></div>`;
+ return `<button class="btn ghost sm" onclick="go('meus')">← Meus cursos</button>
+ <p class="sub mt">${c.t}</p><h1 style="margin:4px 0 4px">${c.aulas[i]}</h1>
+ <div class="ch"><div>
+  <div class="tabs">${[['video','Vídeo'],['slides','Slides'],['pdf','PDF e material']].map(([k,l])=>`<button class="${S.mat===k?'on':''}" onclick="S.mat='${k}';S.slide=0;render()">${l}</button>`).join('')}</div>${mat}</div>
+  <div class="card" style="padding:10px"><div style="padding:6px 8px 10px"><b>Aulas</b><div class="bar" style="margin-top:8px"><i style="width:${prog(c)}%"></i></div><small class="sub">${prog(c)}% concluído</small></div>
+  ${c.aulas.map((a,j)=>`<button class="les ${S.done[c.id+'-'+j]?'ok':''} ${j===i?'cur':''}" onclick="S.lesson=${j};S.mat='video';render()"><span class="ic">${S.done[c.id+'-'+j]?'✓':j+1}</span><span class="t">${a}<br><small>52 min · slides · PDF</small></span></button>`).join('')}
+  <button class="les exam" ${all?'':'disabled'} onclick="startQuiz('${c.id}')"><span class="ic">✎</span><span class="t"><b>Prova final</b><br><small>${all?(S.grade[c.id]!=null?`Sua nota: ${fmtG(S.grade[c.id])} · `:'')+`5 questões · nota mínima ${MIN}`:'Libera quando você assistir todas as aulas'}</small></span></button></div>
+ </div>`;
+}
+function play(){
+ const c=C(S.course),id=c.id+'-'+S.lesson;if(S.done[id])return;const b=$('#pbar');let p=0;
+ const iv=setInterval(()=>{p+=2.5;b.style.width=p+'%';const t=Math.round(3130*p/100);$('#tcur').textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');
+  if(p>=100){clearInterval(iv);S.done[id]=true;const nx=c.aulas.findIndex((_,j)=>!S.done[c.id+'-'+j]);toast(nx<0?'Todas as aulas assistidas: prova liberada ✎':'Aula concluída ✓');if(nx>=0)S.lesson=nx;render()}},35);
+}
+
+// ---------- prova ----------
+let TIMER=null;function stopTimer(){clearInterval(TIMER);TIMER=null}
+const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+const fmtG=g=>g.toFixed(1).replace('.',',');
+const SIM=['pcr','trauma','legis'].map(id=>C(id).bank).flat().filter((_,i)=>i%3===0);
+function startQuiz(id){const sim=id==='sim';S.quiz={id,ans:{},done:false,sim,left:sim?15*60:null};S.tab=sim?'simulado':'meus';render();scrollTo(0,0);
+ if(sim){stopTimer();TIMER=setInterval(()=>{if(!S.quiz||S.quiz.done)return stopTimer();S.quiz.left--;const t=$('#timer');if(t)t.textContent=fmt(S.quiz.left);if(S.quiz.left<=0)finishQuiz()},1000)}}
+function pick(qi,oi){if(S.quiz.done)return;S.quiz.ans[qi]=oi;render()}
+function quizView(){
+ const Qz=S.quiz,qs=Qz.sim?SIM:C(Qz.id).bank,c=C(Qz.id);const answered=Object.keys(Qz.ans).length;
+ let head=`${Qz.sim?'':`<button class="btn ghost sm" onclick="S.quiz=null;render()">← Voltar ao curso</button>`}<div class="qhead mt"><div><p class="sub">${Qz.sim?'Simulado no formato da prova · PCR, trauma e legislação':c.t}</p><h1>${Qz.sim?'Simulado SAMU #3':'Prova final'}</h1></div>${Qz.sim?`<span class="timer" id="timer">${fmt(Qz.left)}</span>`:`<span class="pill or">Nota mínima ${MIN} para o certificado</span>`}</div>`;
+ let res='';
+ if(Qz.done){
+  const ok=qs.filter((q,i)=>Qz.ans[i]===q.c).length,g=ok/qs.length*10,pass=g>=MIN;
+  const code=certCode(Qz.id);
+  res=`<div class="card" style="margin-bottom:16px;border-color:${pass?'var(--teal)':'var(--red)'}"><div class="result"><div class="score" style="color:${pass?'var(--teal)':'var(--red)'}">${fmtG(g)}<small>/10</small></div><div><b style="font-size:18px">${Qz.sim?(pass?'Bom resultado! Você está no ritmo da aprovação.':'Atenção: abaixo da média de aprovação.'):pass?'Aprovado! Seu certificado está liberado.':'Ainda não foi dessa vez.'}</b><p class="sub">${ok} de ${qs.length} acertos. ${!Qz.sim&&!pass?'Revise o comentário das questões e tente de novo. Na versão real, as questões mudam a cada tentativa.':''}</p>
+   ${!Qz.sim&&pass?`<div class="linkbox"><span>🔗</span><span class="mono">seucurso.com.br/certificado/${code}</span><button class="btn sm" onclick="openCert('${Qz.id}')">Emitir certificado</button></div><p class="demo-note">O mesmo link chega no WhatsApp do aluno.</p>`:''}
+   <div class="row" style="margin-top:12px">${!Qz.sim&&!pass?`<button class="btn" onclick="startQuiz('${Qz.id}')">Tentar de novo</button>`:''}${Qz.sim?`<button class="btn" onclick="startQuiz('sim')">Refazer simulado</button>`:''}</div></div></div></div>`;
+ }
+ const list=qs.map((q,i)=>`<div class="card q"><p>${i+1}. ${q.q}</p>${q.o.map((o,j)=>{let k='';if(Qz.done){if(j===q.c)k='right';else if(Qz.ans[i]===j)k='wrong'}else if(Qz.ans[i]===j)k='sel';return `<button class="opt ${k}" onclick="pick(${i},${j})"><span class="l">${'ABCD'[j]}</span><span>${o}</span></button>`}).join('')}${Qz.done?`<div class="why"><b>Comentário:</b> ${q.w}</div>`:''}</div>`).join('');
+ const foot=Qz.done?'':`<div class="row" style="justify-content:space-between"><small class="sub">${answered} de ${qs.length} respondidas</small><button class="btn" ${answered<qs.length?'disabled':''} onclick="finishQuiz()">Entregar ${Qz.sim?'simulado':'prova'}</button></div>`;
+ return head+res+list+foot;
+}
+function finishQuiz(){const Qz=S.quiz,qs=Qz.sim?SIM:C(Qz.id).bank;stopTimer();Qz.done=true;
+ const g=qs.filter((q,i)=>Qz.ans[i]===q.c).length/qs.length*10;
+ if(Qz.sim)S.simScore=g;else{S.grade[Qz.id]=Math.max(S.grade[Qz.id]??0,g);if(g>=MIN)toast('Certificado liberado 🎓')}render();scrollTo(0,0)}
+function simulado(){
+ if(S.quiz&&S.quiz.sim)return quizView();
+ return `<h1>Simulados SAMU</h1><p class="sub">Mesmo formato da prova: tempo corrido, questões de vários cursos e correção comentada.</p>
+ <div class="grid g2 mt"><div class="card"><span class="pill or">Incluso na Mentoria SAMU</span><h2 style="margin-top:10px">Simulado SAMU #3</h2><p class="sub">5 questões na demo. Na versão real, 50 questões sorteadas do banco por tema.</p><div class="row" style="margin:12px 0"><span class="pill">⏱ 15 min</span><span class="pill">PCR · Trauma · Legislação</span></div><button class="btn" onclick="startQuiz('sim')">Começar simulado</button></div>
+ <div class="card"><h2>Seu histórico</h2><table class="tb"><tr><th>Simulado</th><th>Nota</th><th>Posição</th></tr><tr><td>#1 · 2026-10-20</td><td>5,4</td><td>38º de 112</td></tr><tr><td>#2 · 2026-11-10</td><td>6,6</td><td>21º de 112</td></tr><tr><td>#3</td><td>${S.simScore!=null?fmtG(S.simScore):'—'}</td><td>${S.simScore!=null?(S.simScore>=8?'7º':'19º')+' de 112':'—'}</td></tr></table><p class="demo-note">Ranking da turma: motiva e mostra quem já está pronto para a prova.</p></div></div>`;
+}
+
+// ---------- certificado ----------
+function qr(seed,px=70){let s=0;for(const ch of seed)s=(s*31+ch.charCodeAt(0))>>>0;const r=()=>(s=(s*1103515245+12345)>>>0)/4294967296;const n=21;let out='';
+ const fin=(x,y)=>`<rect x="${x}" y="${y}" width="7" height="7" fill="#0E1B2C"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3" fill="#0E1B2C"/>`;
+ for(let y=0;y<n;y++)for(let x=0;x<n;x++){if((x<8&&y<8)||(x>12&&y<8)||(x<8&&y>12))continue;if(r()>.52)out+=`<rect x="${x}" y="${y}" width="1" height="1" fill="#0E1B2C"/>`}
+ return `<svg width="${px}" height="${px}" viewBox="-1 -1 23 23" shape-rendering="crispEdges" style="flex:none"><rect x="-1" y="-1" width="23" height="23" fill="#fff"/>${out}${fin(0,0)}${fin(14,0)}${fin(0,14)}</svg>`}
+function certCode(id){let h=0;for(const ch of id+S.name)h=(h*33+ch.charCodeAt(0))>>>0;return 'EG-'+id.slice(0,3).toUpperCase()+'-'+(h%90000+10000)}
+function openCert(id){S.tab='certs';S.certOf=id;S.course=null;S.quiz=null;render();scrollTo(0,0)}
+function certsView(){
+ if(S.certOf){const c=C(S.certOf),code=certCode(c.id);
+  return `<button class="btn ghost sm" onclick="S.certOf=null;render()">← Meus certificados</button><h1 class="mt">Seu certificado 🎉</h1><p class="sub">Confira seu nome antes de baixar.</p>
+  <div class="field mt"><input id="nm" value="${S.name}" aria-label="Nome no certificado"><button class="btn dark" onclick="S.name=$('#nm').value||S.name;render()">Atualizar nome</button><button class="btn" onclick="toast('Na versão real, baixa o PDF do certificado')">Baixar PDF</button></div>
+  <div class="cert"><div class="in"><div class="k">Certificado de conclusão</div><h3>${c.t}</h3><p class="sub">Certificamos que</p><div class="nm">${S.name}</div>
+  <p style="max-width:56ch;margin:0 auto">concluiu o curso livre <b>${c.t}</b>, com carga horária de <b>${c.h} horas</b> e nota <b>${fmtG(S.grade[c.id])}</b> na avaliação final.</p>
+  <div class="ft"><div class="sig"><b>Enf. Genisson</b><br>Instrutor responsável</div><div class="qr">${qr(code)}<div>Verifique em<br><b class="mono" style="color:var(--ink)">seucurso.com.br/verificar</b><br>Código <span class="mono">${code}</span><br>Emitido em ${new Date().toLocaleDateString('pt-BR')}</div></div></div></div></div>
+  <p class="demo-note">O QR leva para uma página que confirma o certificado: dá credibilidade e evita certificado falso circulando.</p>`}
+ const cs=certs();
+ return `<h1>Certificados</h1><p class="sub">Cada curso aprovado com nota ${MIN} ou mais gera o seu certificado.</p>`+(cs.length?`<div class="grid mt">${cs.map(c=>`<div class="card my">${cover(c,1)}<div><b>${c.t}</b><br><small class="sub">${c.h}h · nota ${fmtG(S.grade[c.id])} · código ${certCode(c.id)}</small></div><button class="btn" onclick="openCert('${c.id}')">Abrir</button></div>`).join('')}</div>`
+  :`<div class="card mt lockbox"><h2>Nenhum certificado ainda</h2><p class="sub">Termine as aulas de um curso e tire ${MIN} ou mais na prova final.</p><div class="row" style="justify-content:center;margin-top:14px"><button class="btn" onclick="openCourse('pcr')">Continuar meu curso</button><button class="btn ghost" onclick="skipDemo()">Pular para o certificado (demo)</button></div></div>`);
+}
+function skipDemo(){C('pcr').aulas.forEach((_,i)=>S.done['pcr-'+i]=true);S.grade.pcr=Math.max(S.grade.pcr??0,8);openCert('pcr');toast('Atalho da demo: curso concluído com nota 8')}
+
+// ---------- professor ----------
+const SALES=[['Dr. Rafael Mendes','Pacote Urgência e Emergência',99,'há 12 min'],['Enf. Patrícia Lima','Cálculo de medicação e gotejamento',39,'há 40 min'],['Dra. Camila Rocha','Mentoria SAMU 2027',397,'há 2 h'],['Téc. Marcos Silva','Escala de Glasgow e avaliação neurológica',39,'há 3 h'],['Enf. Júlia Campos','Pacote Enfermagem',119,'ontem']];
+function painel(){
+ const extra=S.sales.reduce((s,x)=>s+x.v,0),fat=8742+extra,n=171+S.sales.length;
+ const taxa=Math.round(fat*0.099+n*1),own=Math.round(fat*0.0099);
+ const rows=[...S.sales.map(s=>[s.who,s.t,s.v,'agora']),...SALES];
+ return `<h1>Vendas</h1><p class="sub">Novembro de 2026 · tudo cai direto na sua conta</p>
+ <div class="grid mt" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">
+  <div class="card kpi"><small>Faturamento do mês</small><b>${brl(fat)}</b><span class="d">+32% x outubro</span></div>
+  <div class="card kpi"><small>Vendas</small><b>${n}</b><span class="d">ticket médio ${brl(Math.round(fat/n))}</span></div>
+  <div class="card kpi"><small>Alunos ativos</small><b>284</b><span class="d">+61 este mês</span></div>
+  <div class="card kpi"><small>Certificados emitidos</small><b>97</b><span class="d">aprovação de 81%</span></div>
+ </div>
+ <div class="grid g2 mt">
+  <div class="card"><h2>Faturamento por mês</h2><div class="chart">${[['jul',22],['ago',35],['set',48],['out',66],['nov',88]].map(([m,v],i)=>`<div class="${i<4?'past':''}" style="height:${v}%"><span>${m}</span></div>`).join('')}</div><div style="height:22px"></div></div>
+  <div class="card"><h2>Quanto fica com você</h2><table class="tb"><tr><td>Plataforma pronta (≈ 9,9% + R$ 1 por venda)</td><td style="text-align:right;color:var(--red);font-weight:700">− ${brl(taxa)}</td></tr><tr><td>Sua plataforma (Pix ≈ 0,99%)</td><td style="text-align:right;font-weight:700">− ${brl(own)}</td></tr><tr><td><b>Fica a mais no seu bolso este mês</b></td><td style="text-align:right;color:var(--teal);font-weight:800">${brl(taxa-own)}</td></tr></table><p class="demo-note">Estimativa. As taxas variam conforme o meio de pagamento.</p></div>
+ </div>
+ <div class="card mt scroll"><h2>Últimas vendas</h2><table class="tb" style="min-width:560px"><tr><th>Aluno</th><th>Produto</th><th>Valor</th><th>Quando</th></tr>${rows.slice(0,7).map(([a,b,v,w])=>`<tr><td>${a}</td><td>${b}</td><td><b>${brl(v)}</b></td><td>${w}</td></tr>`).join('')}</table></div>`;
+}
+const ST={pcr:[142,84],trauma:[98,79],legis:[77,61],calc:[64,88],glasgow:[51,92]};
+function cursosAdm(){
+ const live=COURSES.filter(c=>!c.soon);
+ return `<h1>Cursos</h1><p class="sub">Cadastre um curso novo em minutos: vídeo, slides, PDF e prova.</p>
+ <div class="card mt"><h2>Novo curso</h2><div class="form">
+  <label>Nome do curso<input id="nt" value="Urgências obstétricas no pré-hospitalar"></label>
+  <label>Público<select id="np"><option value="med">Médicos</option><option value="enf" selected>Enfermeiros</option><option value="tec">Técnicos de enfermagem</option></select></label>
+  <label>Preço<input id="nv" value="39" inputmode="decimal"></label>
+  <label>Carga horária (h)<input id="nh" value="4" inputmode="numeric"></label>
+  <div class="drop ${S.newUp.v?'ok':''}" onclick="S.newUp.v=1;render()">${S.newUp.v?'✓ 5 vídeos enviados (4h12)':'🎬 Enviar vídeos das aulas'}</div>
+  <div class="drop ${S.newUp.p?'ok':''}" onclick="S.newUp.p=1;render()">${S.newUp.p?'✓ Slides e PDF enviados':'📄 Enviar slides e PDF'}</div>
+  <div class="drop ${S.newUp.q?'ok':''}" onclick="S.newUp.q=1;render()" style="grid-column:1/-1">${S.newUp.q?'✓ 10 questões cadastradas · nota mínima 7':'✎ Cadastrar as questões da prova final'}</div>
+ </div><div class="row" style="margin-top:14px"><button class="btn" onclick="publish()">Publicar na loja</button><small class="sub">Aparece na vitrine na hora.</small></div></div>
+ <div class="card mt scroll"><h2>Seus cursos</h2><table class="tb" style="min-width:560px"><tr><th>Curso</th><th>Preço</th><th>Alunos</th><th>Aprovação</th><th>Status</th></tr>
+ ${COURSES.map(c=>`<tr><td>${c.t}</td><td>${brl(c.price)}</td><td>${c.soon?'—':(ST[c.id]||[0])[0]}</td><td>${ST[c.id]?ST[c.id][1]+'%':'—'}</td><td>${c.soon?'<span class="pill">Rascunho</span>':'<span class="pill ok">Na loja</span>'}</td></tr>`).join('')}</table>
+ <p class="demo-note">${live.length} cursos na loja. A estrutura comporta os 30 a 40 cursos que você planeja.</p></div>`;
+}
+function publish(){
+ const t=$('#nt').value.trim()||'Novo curso',p=$('#np').value,v=parseFloat(($('#nv').value||'39').replace(',','.'))||39,h=parseInt($('#nh').value)||4;
+ const id='n'+Date.now();
+ COURSES.unshift({id,t,pub:[p],h,price:v,ic:'pulse',col:'#0E1B2C,#F26B1D',mine:true,aulas:['Aula 1','Aula 2','Aula 3','Aula 4','Aula 5'],bank:C('pcr').bank});
+ S.newUp={};toast('Curso publicado na loja ✓');render();
+}
+const STUD=[['Dr. Rafael Mendes','#3B6FD8','Legislação do SAMU','4/4 aulas',null,'há 1 h','ok'],['Dra. Camila Rocha','#C2417A','Atendimento à PCR','prova: nota 4,0',4,'há 2 dias','rd'],['Téc. Marcos Silva','#0E9F8F','Escala de Glasgow','2/4 aulas',null,'hoje','ok'],['Enf. Larissa Pinto','#D98A1E','Cálculo de medicação','0/4 aulas',null,'há 9 dias','or'],['Dr. Thiago Alves','#6A4FC9','Trauma: XABCDE','prova: nota 6,0',6,'há 4 dias','rd'],['Enf. Júlia Campos','#2F8F4E','Pacote Enfermagem','certificado ✓',9,'ontem','ok']];
+function alunos(){
+ return `<h1>Alunos</h1><p class="sub">Quem está avançando e quem precisa de um empurrão.</p>
+ <div class="card mt scroll"><table class="tb" style="min-width:640px"><tr><th>Aluno</th><th>Curso</th><th>Onde está</th><th>Último acesso</th><th></th></tr>
+ ${STUD.map(([n,c,cu,w,g,u,st],i)=>`<tr><td><span class="av" style="background:${c}">${n.split(' ')[1][0]}${n.split(' ')[2][0]}</span>${n}</td><td>${cu}</td><td><span class="pill ${st==='rd'?'rd':st==='or'?'or':'ok'}">${w}</span></td><td>${u}</td><td>${st!=='ok'?`<button class="btn ghost sm" onclick="nudge(${i})">💬 Lembrete</button>`:''}</td></tr>`).join('')}
+ </table></div><div id="nudge"></div>
+ <div class="card mt"><h2>Onde os alunos mais erram</h2><ul class="weak">${[['Portaria 2048 x 1600 (legislação)',39],['Cálculo de microgotas',54],['Dose de adrenalina na PCR',63],['Ordem do XABCDE',74],['Glasgow: resposta motora',89]].map(([t,v])=>`<li class="${v<60?'':v<80?'mid':'good'}"><div><small>${t}</small><div class="bar"><i style="width:${v}%"></i></div></div><b style="text-align:right">${v}%</b></li>`).join('')}</ul><p class="demo-note">Mostra onde vale gravar uma aula extra ou reforçar na mentoria.</p></div>`;
+}
+function nudge(i){const [n,,cu,w]=STUD[i];const first=n.split(' ').slice(0,2).join(' ');
+ const msg=w.startsWith('prova')?`Oi, ${first}! Vi que a prova de ${cu} ainda não passou do 7. Separei o resumo em PDF dos temas que você errou: dá uma revisada e tenta de novo, você tá perto 💪`:`Oi, ${first}! Faz uns dias que você não aparece no curso de ${cu}. 20 minutinhos hoje e você já volta pro ritmo. A próxima aula te espera 😉`;
+ $('#nudge').innerHTML=`<div class="card mt"><h2>Mensagem enviada no WhatsApp</h2><div class="wa">${msg}</div><p class="demo-note">Na versão real, sai sozinha quando o aluno fica 7 dias sem entrar ou não passa na prova.</p></div>`;toast('Lembrete enviado para '+first)}
+function autom(){
+ const A=[['compra','Compra aprovada → acesso no WhatsApp','Assim que o pagamento cai: boas-vindas e link da primeira aula.'],['pix','Pix gerado e não pago','Depois de 1 h, lembra o aluno com o código Pix de novo.'],['parou','"Você parou na aula X"','Aluno 7 dias sem entrar recebe o link exato de onde parou.'],['reprov','Não passou na prova','Manda o resumo dos temas que ele errou e incentiva a refazer.'],['cert','Certificado + pedido de depoimento','Ao tirar 7: envia o link do certificado e pede um depoimento.'],['upsell','Oferta do próximo curso','Quem concluiu um curso recebe o pacote com desconto.']];
+ return `<h1>Automações</h1><p class="sub">O que a plataforma faz sozinha enquanto você está de plantão ou dando aula.</p>
+ <div class="card mt">${A.map(([k,t,d])=>`<div class="auto"><div class="t"><b>${t}</b><small>${d}</small></div><button class="tg ${S.auto[k]?'on':''}" role="switch" aria-checked="${S.auto[k]}" aria-label="${t}" onclick="S.auto['${k}']=!S.auto['${k}'];render();toast(S.auto['${k}']?'Automação ligada':'Automação desligada')"></button></div>`).join('')}</div>`;
+}
+
+function render(){
+ $('#side').innerHTML=side();
+ let h='';
+ if(S.view==='aluno'){
+  if(S.tab==='loja')h=loja();
+  else if(S.tab==='meus')h=S.quiz&&!S.quiz.sim?quizView():S.course?courseView():meus();
+  else if(S.tab==='simulado')h=simulado();
+  else h=certsView();
+ } else h=S.tab==='painel'?painel():S.tab==='cursos'?cursosAdm():S.tab==='alunos'?alunos():autom();
+ $('#main').innerHTML=h;
+}
+render();
+</script>
+</body>
+</html>
