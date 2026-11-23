@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Encomendas Zarrô</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* proposta: texto à esquerda, celular com o protótipo à direita; tema único, claro, no tom de argila */
+:root{color-scheme:light;--bg:#efe6da;--ink:#2a1f1a;--muted:#7d6a5d;--terra:#9a4f33;--terra2:#c27a54;--card:#fbf6ef;--line:#e2d4c3;--ok:#4f7a52}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.5}
+.wrap>section{min-width:0}
+.proto{align-self:flex-start;font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--card);border-radius:999px;padding:3px 9px;margin:10px 18px 0}
+.wrap{max-width:1100px;margin:0 auto;padding-block:40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:start}
+@media(max-width:860px){.wrap{grid-template-columns:1fr;gap:28px}.phone{margin:0 auto}}
+h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(34px,4.4vw,52px);line-height:1.02;margin-bottom:14px}
+h1 em{color:var(--terra)}
+.tag{display:inline-block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);font-weight:600;margin-bottom:12px}
+.lead{color:var(--muted);font-size:16.5px;margin-bottom:24px}
+h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:28px;margin:24px 0 8px}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px}
+.flow span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+.flow b{color:var(--terra2)}
+ul.why{list-style:none;display:grid;gap:10px;margin-top:6px}
+ul.why li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:14.5px}
+.foot{margin-top:24px;font-size:12.5px;color:var(--muted)}
+.phone{width:100%;max-width:380px;background:#17110e;border-radius:42px;padding:12px;box-shadow:0 30px 60px -20px rgba(70,40,20,.45);position:sticky;top:24px}
+.screen{background:var(--card);border-radius:32px;overflow:hidden;height:720px;display:flex;flex-direction:column}
+.head{padding:16px 18px 0;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Instrument Serif',serif;font-size:26px;letter-spacing:.04em}
+.tabs{display:flex;gap:4px;background:#eadccb;border-radius:999px;padding:3px}
+.tabs button{border:0;background:none;border-radius:999px;padding:6px 10px;font:inherit;font-size:12px;cursor:pointer;color:var(--muted)}
+.tabs button.on{background:#fff;color:var(--ink);font-weight:600}
+.body{flex:1;overflow:auto;padding:14px 18px}
+.prev{height:170px;border-radius:18px;background:radial-gradient(circle at 50% 120%,#d8c4ac,#efe3d4);display:grid;place-items:center;position:relative;margin-bottom:14px}
+.lbl{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:12px 0 6px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;font:inherit;font-size:13.5px;cursor:pointer;color:var(--ink)}
+.chip.sel{border-color:var(--terra);background:#f6e6da}
+.sw{width:34px;height:34px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1.5px var(--line);cursor:pointer}
+.sw.sel{box-shadow:0 0 0 2.5px var(--terra)}
+input[type=range]{width:100%;accent-color:var(--terra)}
+input[type=text]{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px;font:inherit;background:#fff}
+.est{display:flex;justify-content:space-between;background:#f1e4d5;border-radius:14px;padding:12px 14px;margin-top:14px;font-size:13.5px}
+.est b{display:block;font-size:17px}
+.bar{padding:12px 18px;border-top:1px solid var(--line)}
+.btn{width:100%;border:0;border-radius:14px;padding:14px;font:inherit;font-weight:600;cursor:pointer;background:var(--terra);color:#fff}
+.wa{background:#e7f6e9;border-radius:12px;padding:12px;font-size:13px;white-space:pre-line;font-family:ui-monospace,monospace}
+.tl{list-style:none;position:relative;margin-top:8px}
+.tl li{padding:0 0 18px 30px;position:relative;font-size:14px}
+.tl li:before{content:'';position:absolute;left:8px;top:18px;bottom:0;width:2px;background:var(--line)}
+.tl li:last-child:before{display:none}
+.tl li i{position:absolute;left:0;top:2px;width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--line)}
+.tl li.done i{background:var(--ok);border-color:var(--ok)}
+.tl li.now i{background:var(--terra2);border-color:var(--terra2);box-shadow:0 0 0 5px rgba(194,122,84,.2)}
+.tl small{display:block;color:var(--muted);font-size:12px}
+.notif{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-size:13px;margin-bottom:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section>
+    <span class="tag">Feito pra @zarroceramicas</span>
+    <h1>Encomenda personalizada <em>sem vai e vem</em> no direct.</h1>
+    <p class="lead">Vi que a Zarrô faz presentes, encomendas, mesa posta e personaliza peças para marcas e pessoas, e que tudo começa num link de WhatsApp. Encomenda de cerâmica tem muita pergunta antes de fechar: qual peça, qual esmalte, quantas, com logo ou não, e principalmente <b>quando fica pronto</b>, porque cada peça passa por várias etapas e duas queimas.</p>
+
+    <h2>O caminho de uma encomenda hoje</h2>
+    <div class="flow"><span>"Vocês fazem caneca com logo?"</span><b>→</b><span>fotos de esmalte</span><b>→</b><span>"quantas?"</span><b>→</b><span>prazo</span><b>→</b><span>orçamento</span><b>→</b><span>"e aí, já ficou pronto?"</span></div>
+
+    <h2>Com o app</h2>
+    <ul class="why">
+      <li>🏺 <b>O cliente monta a encomenda</b>: escolhe peça, esmalte, quantidade e personalização, e já vê uma faixa de valor e o prazo estimado.</li>
+      <li>📩 <b>Chega pra vocês pronto</b>: o pedido cai no WhatsApp organizado, com tudo que precisa pra fechar. Vocês só confirmam.</li>
+      <li>🔥 <b>Acompanhamento da produção</b>: a equipe marca a etapa (modelagem, secagem, queima, esmaltação…) e o cliente recebe aviso automático. Acabou o "já ficou pronto?".</li>
+      <li>🎁 <b>Timing</b>: fim de ano é época de brinde corporativo. Um link desses no destaque "Personalize!" ajuda a receber pedido grande sem travar o atendimento.</li>
+    </ul>
+    <p class="foot">Protótipo demonstrativo feito por @fran.automacao. Peças, cores, valores e prazos são exemplos: no projeto real entram os da Zarrô.</p>
+  </section>
+
+  <div class="phone"><div class="screen">
+    <span class="proto">Protótipo · não é a loja oficial</span>
+    <div class="head"><div class="logo">zarrô</div><div class="tabs"><button class="on" data-t="enc">Encomendar</button><button data-t="ped">Meu pedido</button></div></div>
+    <div class="body" id="body"></div>
+    <div class="bar" id="bar"><button class="btn" id="go">Enviar pedido pelo WhatsApp</button></div>
+  </div></div>
+</div>
+
+<script>
+const pecas=[{n:'Caneca',p:[65,95],d:0},{n:'Prato',p:[80,120],d:3},{n:'Tigela',p:[55,85],d:0},{n:'Vaso',p:[140,260],d:7}];
+const esm=[{n:'Azul cobalto',c:'#1f3a7a'},{n:'Verde mar',c:'#2f8a7c'},{n:'Terracota',c:'#a8552f'},{n:'Areia',c:'#d9c6a5'},{n:'Preto fosco',c:'#262322'}];
+const s={tab:'enc',p:0,e:0,q:30,txt:'',sent:false};
+const $=id=>document.getElementById(id);
+function prazo(){return 15+pecas[s.p].d+Math.ceil(s.q/40)*5+(s.txt?4:0)}
+function faixa(){const [a,b]=pecas[s.p].p;const desc=s.q>=50?.85:s.q>=20?.92:1;const add=s.txt?8:0;return[(a+add)*desc,(b+add)*desc].map(v=>Math.round(v))}
+function svg(){const c=esm[s.e].c;const t=(s.txt||'').slice(0,14);
+ if(s.p===0)return`<svg width="150" height="130" viewBox="0 0 150 130"><path d="M100 45c22 0 26 40 0 42" stroke="${c}" stroke-width="10" fill="none"/><rect x="30" y="20" width="75" height="95" rx="10" fill="${c}"/><rect x="30" y="20" width="75" height="22" rx="10" fill="#f3e9dc"/><text x="67" y="80" fill="#f3e9dc" font-family="Instrument Serif" font-size="14" text-anchor="middle">${t}</text></svg>`;
+ if(s.p===1)return`<svg width="170" height="120" viewBox="0 0 170 120"><ellipse cx="85" cy="62" rx="78" ry="48" fill="${c}"/><ellipse cx="85" cy="58" rx="54" ry="32" fill="#f3e9dc" opacity=".9"/><text x="85" y="64" fill="${c}" font-family="Instrument Serif" font-size="15" text-anchor="middle">${t}</text></svg>`;
+ if(s.p===2)return`<svg width="170" height="120" viewBox="0 0 170 120"><path d="M15 40h140c0 45-30 70-70 70S15 85 15 40z" fill="${c}"/><ellipse cx="85" cy="40" rx="70" ry="14" fill="#f3e9dc"/><text x="85" y="82" fill="#f3e9dc" font-family="Instrument Serif" font-size="14" text-anchor="middle">${t}</text></svg>`;
+ return`<svg width="130" height="150" viewBox="0 0 130 150"><path d="M50 10h30v20c35 15 40 50 30 80-8 25-30 32-45 32s-37-7-45-32C10 80 15 45 50 30z" fill="${c}"/><ellipse cx="65" cy="12" rx="17" ry="5" fill="#f3e9dc"/><text x="65" y="95" fill="#f3e9dc" font-family="Instrument Serif" font-size="14" text-anchor="middle">${t}</text></svg>`}
+function dt(n){const d=new Date();d.setDate(d.getDate()+n);return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})}
+function render(){
+ document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===s.tab));
+ const b=$('body');
+ if(s.tab==='enc'&&!s.sent){$('bar').style.display='block';const [a,z]=faixa();
+  b.innerHTML=`<div class="prev" id="pv">${svg()}</div>
+  <div class="lbl">Peça</div><div class="row">${pecas.map((x,i)=>`<button class="chip ${s.p===i?'sel':''}" data-p="${i}">${x.n}</button>`).join('')}</div>
+  <div class="lbl">Esmalte · ${esm[s.e].n}</div><div class="row">${esm.map((x,i)=>`<div class="sw ${s.e===i?'sel':''}" data-e="${i}" style="background:${x.c}" title="${x.n}"></div>`).join('')}</div>
+  <div class="lbl">Quantidade · <span id="qv">${s.q}</span> peças</div><input type="range" min="1" max="200" value="${s.q}" id="q">
+  <div class="lbl">Nome ou marca na peça (opcional)</div><input type="text" id="txt" maxlength="14" placeholder="ex.: Café Atalaia" value="${s.txt}">
+  <div class="est" id="ev"><div><small>Valor por peça (estimado)</small><b>R$ ${a} – ${z}</b></div><div style="text-align:right"><small>Fica pronto em</small><b>~${prazo()} dias</b></div></div>`;
+  b.querySelectorAll('[data-p]').forEach(o=>o.onclick=()=>{s.p=+o.dataset.p;render()});
+  b.querySelectorAll('[data-e]').forEach(o=>o.onclick=()=>{s.e=+o.dataset.e;render()});
+  const upd=()=>{const [a,z]=faixa();$('qv').textContent=s.q;$('pv').innerHTML=svg();$('ev').innerHTML=`<div><small>Valor por peça (estimado)</small><b>R$ ${a} – ${z}</b></div><div style="text-align:right"><small>Fica pronto em</small><b>~${prazo()} dias</b></div>`};
+  $('q').oninput=e=>{s.q=+e.target.value;upd()};
+  $('txt').oninput=e=>{s.txt=e.target.value;upd()};
+ }
+ else if(s.tab==='enc'&&s.sent){$('bar').style.display='block';$('go').textContent='Montar outra encomenda';const [a,z]=faixa();
+  b.innerHTML=`<div class="lbl">Mensagem que chega no WhatsApp da Zarrô</div><div class="wa">🏺 NOVA ENCOMENDA #0427
+Peça: ${pecas[s.p].n}
+Esmalte: ${esm[s.e].n}
+Quantidade: ${s.q}
+Personalização: ${s.txt||'—'}
+Faixa estimada: R$ ${a}–${z}/peça
+Prazo estimado: ~${prazo()} dias (${dt(prazo())})
+
+👉 Responder: 1-Confirmar  2-Ajustar</div>
+  <p style="font-size:13px;color:var(--muted);margin-top:12px">Vocês confirmam com um toque e o cliente recebe o link de acompanhamento. Veja na aba <b>Meu pedido</b>.</p>`}
+ else{$('bar').style.display='none';
+  const et=[['Pedido confirmado','sinal recebido',0],['Modelagem','no torno',3],['Secagem','',8],['1ª queima (biscoito)','',11],['Esmaltação',esm[s.e].n,13],['2ª queima','',16],['Embalagem e envio','',prazo()]];
+  b.innerHTML=`<div class="notif">🔔 <b>Zarrô:</b> Suas ${s.q} peças entraram na <b>1ª queima</b>! Próxima etapa: esmaltação em ${esm[s.e].n.toLowerCase()} 🔥</div>
+  <div class="lbl">Encomenda #0427 · ${s.q}× ${pecas[s.p].n.toLowerCase()}</div>
+  <ul class="tl">${et.map((x,i)=>`<li class="${i<3?'done':i===3?'now':''}"><i></i>${x[0]}<small>${x[1]?x[1]+' · ':''}${i<=3?'':'prev. '}${dt(x[2])}</small></li>`).join('')}</ul>
+  <p style="font-size:12.5px;color:var(--muted)">A equipe só toca na etapa no painel deles. O aviso pro cliente sai sozinho.</p>`}
+}
+$('go').onclick=()=>{s.sent=!s.sent;$('go').textContent=s.sent?'Montar outra encomenda':'Enviar pedido pelo WhatsApp';render()};
+document.querySelectorAll('.tabs button').forEach(x=>x.onclick=()=>{s.tab=x.dataset.t;render()});
+render();
+</script>
+</body>
+</html>
